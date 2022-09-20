@@ -1,36 +1,32 @@
 const casas = document.querySelectorAll(".casa");
-const textoStatus = document.querySelector('#textoStatus');
+const textoStatus = document.querySelector("#textoStatus");
 const vitoria = [
-    [0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
 ];
 
-
-let opcoes = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-];
+let opções = ["", "", "", "", "", "", "", "", ""];
 let jogadorDaVez = "X";
 let jogoRodando = false;
 
 iniciar();
 
 function iniciar() {
-    casas.forEach(casa => casa.addEventListener("click", casaClicada())); //função addEventListener que recebe o nome do evento a ser assistido como string e a função que deverá ser executada assim que ele acontecer, que é o nosso callback.
-    textoStatus.textContent = `vez do jogador ${jogadorDaVez}`;
+    casas.forEach(casa => casa.addEventListener("click", casaClicada));
+    textoStatus.textContent = `Vez do jogador ${jogadorDaVez}`;
     jogoRodando = true;
 }
 
 function casaClicada() {
-    const numeroCasa = this.getAttribute(casa);
+    const numeroCasa = this.getAttribute("casa");
 
-    if (opcoes[numeroCasa] != !jogoRodando) {
+    if (opções[numeroCasa] != !jogoRodando) {
         return;
     }
 
@@ -40,7 +36,7 @@ function casaClicada() {
 }
 
 function marcaCasaClicada(casa, index) {
-    opcoes[index] = jogadorDaVez;
+    opções[index] = jogadorDaVez;
     casa.textContent = jogadorDaVez;
 }
 
@@ -54,9 +50,9 @@ function informaResultado() {
 
     for (let i = 0; i < vitoria.length; i++) {
         const condição = vitoria[i];
-        const casaA = opcoes[condição[0]];
-        const casaB = opcoes[condição[1]];
-        const casaC = opcoes[condição[2]];
+        const casaA = opções[condição[0]];
+        const casaB = opções[condição[1]];
+        const casaC = opções[condição[2]];
 
         if (casaA == "" || casaB == "" || casaC == "") {
             continue;
@@ -70,7 +66,8 @@ function informaResultado() {
     if (vitoria) {
         textoStatus.textContent = `${jogadorDaVez} é o vencedor!`;
         jogoRodando = false;
-    } else if (! opcoes.includes("")) {
+    } 
+    else if(!opções.includes("")) {
         textoStatus.textContent = 'Empate!';
         jogoRodando = false;
     } else {
