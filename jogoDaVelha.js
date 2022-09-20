@@ -24,12 +24,11 @@ function iniciar() {
 }
 
 function casaClicada() {
-    const numeroCasa = this.getAttribute("casa");
+    const numeroCasa = this.getAttribute("id");
 
-    if (opções[numeroCasa] != !jogoRodando) {
+    if (opções[numeroCasa] != "" || !jogoRodando) {
         return;
     }
-
     marcaCasaClicada(this, numeroCasa);
     informaResultado();
 
@@ -42,7 +41,7 @@ function marcaCasaClicada(casa, index) {
 
 function mudarVezJogador() {
     jogadorDaVez == "X" ? "O" : "X";
-    textoStatus.textContent = `vez do jogador ${jogadorDaVez}`;
+    textoStatus.textContent = `Vez do jogador ${jogadorDaVez} - mudou!!`;
 }
 
 function informaResultado() {
