@@ -1,32 +1,36 @@
 const casas = document.querySelectorAll(".casa");
-const textoStatus = document.querySelector("#textoStatus");
+const textoStatus = document.querySelector('#textoStatus');
 const vitoria = [
-    [0,1,2]
-    [3,4,5]
-    [6,7,8]
-    [0,3,6]
-    [1,4,7]
-    [2,5,8]
-    [0,4,8]
-    [2,4,6]
+    [0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]
 ];
 
-let opções = ["", "", "", "", "", "", "", "", ""];
+
+let opcoes = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+];
 let jogadorDaVez = "X";
-let jogoRodando = false; 
+let jogoRodando = false;
 
 iniciar();
 
 function iniciar() {
-    casas.forEach(casa => casas.addEventListener("click", casaClicada));
+    casas.forEach(casa => casa.addEventListener("click", casaClicada())); //função addEventListener que recebe o nome do evento a ser assistido como string e a função que deverá ser executada assim que ele acontecer, que é o nosso callback.
     textoStatus.textContent = `vez do jogador ${jogadorDaVez}`;
     jogoRodando = true;
 }
 
 function casaClicada() {
-    const numeroCasa = this.getAttribute("id");
+    const numeroCasa = this.getAttribute(casa);
 
-    if(opções[numeroCasa] != !jogoRodando) {
+    if (opcoes[numeroCasa] != !jogoRodando) {
         return;
     }
 
@@ -35,45 +39,44 @@ function casaClicada() {
 
 }
 
-function marcaCasaClicada (casa, index) {
-    opções[index] = jogadorDaVez;
+function marcaCasaClicada(casa, index) {
+    opcoes[index] = jogadorDaVez;
     casa.textContent = jogadorDaVez;
 }
 
 function mudarVezJogador() {
-  jogadorDaVez == "X" ? "O" : "X";
-  textoStatus.textContent = `vez do jogador ${jogadorDaVez}`;
+    jogadorDaVez == "X" ? "O" : "X";
+    textoStatus.textContent = `vez do jogador ${jogadorDaVez}`;
 }
 
 function informaResultado() {
     let jogoGanho = false;
 
-    for(let i = 0; i < vitoria.length; i++) {
+    for (let i = 0; i < vitoria.length; i++) {
         const condição = vitoria[i];
-        const casaA = opções[condição[0]];
-        const casaB = opções [condição[1]];
-        const casaC = opções [condição[2]];
+        const casaA = opcoes[condição[0]];
+        const casaB = opcoes[condição[1]];
+        const casaC = opcoes[condição[2]];
 
-        if(casaA == "" || casaB == "" || casaC == ""){
+        if (casaA == "" || casaB == "" || casaC == "") {
             continue;
         }
-        if (casaA == casaB && casaB == casaC){
+        if (casaA == casaB && casaB == casaC) {
             vitoria = true;
             break;
         }
     }
 
-    if(vitoria) {
+    if (vitoria) {
         textoStatus.textContent = `${jogadorDaVez} é o vencedor!`;
         jogoRodando = false;
-    } 
-    else if(!opções.includes("")) {
+    } else if (! opcoes.includes("")) {
         textoStatus.textContent = 'Empate!';
         jogoRodando = false;
-    }
-    else {
+    } else {
         mudarVezJogador();
     }
 
 }
+
 
