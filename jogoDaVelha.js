@@ -30,6 +30,7 @@ function casaClicada() {
         return;
     }
     marcaCasaClicada(this, numeroCasa);
+    mudarVezJogador();
     informaResultado();
 
 }
@@ -40,8 +41,8 @@ function marcaCasaClicada(casa, index) {
 }
 
 function mudarVezJogador() {
-    jogadorDaVez == "X" ? "O" : "X";
-    textoStatus.textContent = `Vez do jogador ${jogadorDaVez} - mudou!!`;
+    jogadorDaVez = (jogadorDaVez == "X") ? "O" : "X";
+    textoStatus.textContent = `Vez do jogador ${jogadorDaVez}`;
 }
 
 function informaResultado() {
@@ -52,6 +53,7 @@ function informaResultado() {
         const casaA = opções[condição[0]];
         const casaB = opções[condição[1]];
         const casaC = opções[condição[2]];
+      
 
         if (casaA == "" || casaB == "" || casaC == "") {
             continue;
