@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,31 +9,47 @@
 
 
     <style>
-        #jogo{
-    width:603px;
-    height:600px;
-    border:solid 3px
-}
- 
-.linha{
-    height:200px;
-    border-bottom:solid 1px;
-}
- 
-.casa{
-    width:200px;
-    height:100%;
-    border-right:solid 1px;
-    float:left;
-    font-size: 50px;
-}
+        #jogo {
+            width: 603px;
+            height: 600px;
+            border: solid 3px;
+            color: #e91e63;
+            text-align: center;
+            
+            
+        }
+
+        .linha {
+            height: 200px;
+            border-bottom: solid 1px;
+        }
+
+        .casa{
+            width: 200px;
+            height: 100%;
+            border-right: solid 1px;
+            float: left;
+            font-size: 100px;
+            font-family: cursive;
+            cursor: pointer;
+            text-align: center;
+        }
+        #textoStatus{
+            text-align: center;
+            font-family: cursive;
+        }
+
+        .teste{
+           
+        }
     </style>
 </head>
+
 <body>
-    <div>
-        <div id="jogo"  onclick="mudarVezJogador()" >
+    <div class="teste">
+        <div id="jogo">
             <div class="linha">
-                <div  class="casa" id="0"  ></div>
+                <div class="casa" id="0"></div>
                 <div class="casa" id="1"></div>
                 <div class="casa" id="2"></div>
             </div>
@@ -56,4 +73,5 @@
 
     <script src="jogoDaVelha.js"></script>
 </body>
+
 </html>

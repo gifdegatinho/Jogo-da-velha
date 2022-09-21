@@ -19,17 +19,19 @@ iniciar();
 
 function iniciar() {
     casas.forEach(casa => casa.addEventListener("click", casaClicada));
-    textoStatus.textContent = `Vez do jogador ${jogadorDaVez}`;
+    textoStatus.textContent = `VEZ DO JOGADOR ${jogadorDaVez}`;
     jogoRodando = true;
 }
 
 function casaClicada() {
     const numeroCasa = this.getAttribute("id");
+    
 
     if (opções[numeroCasa] != "" || !jogoRodando) {
         return;
     }
     marcaCasaClicada(this, numeroCasa);
+    mudarVezJogador()
     informaResultado();
 
 }
@@ -40,12 +42,12 @@ function marcaCasaClicada(casa, index) {
 }
 
 function mudarVezJogador() {
-    jogadorDaVez == "X" ? "O" : "X";
-    textoStatus.textContent = `Vez do jogador ${jogadorDaVez} - mudou!!`;
+   jogadorDaVez = (jogadorDaVez == "X") ? "O" : "X";
+    textoStatus.textContent = `VEZ DO JOGADOR ${jogadorDaVez}`;
 }
 
 function informaResultado() {
-    let jogoGanho = false;
+    let vencedorDaRodada = false;
 
     for (let i = 0; i < vitoria.length; i++) {
         const condição = vitoria[i];
@@ -57,12 +59,12 @@ function informaResultado() {
             continue;
         }
         if (casaA == casaB && casaB == casaC) {
-            vitoria = true;
+            vencedorDaRodada = true;
             break;
         }
     }
 
-    if (vitoria) {
+    if (vencedorDaRodada) {
         textoStatus.textContent = `${jogadorDaVez} é o vencedor!`;
         jogoRodando = false;
     }
@@ -75,4 +77,37 @@ function informaResultado() {
     }
 
 }
+
+
+// function checkWinner(){
+//     let roundWon = false;
+
+//     for(let i = 0; i < winConditions.length; i++){
+//         const condition = winConditions[i];
+//         const cellA = options[condition[0]];
+//         const cellB = options[condition[1]];
+//         const cellC = options[condition[2]];
+
+//         if(cellA == "" || cellB == "" || cellC == ""){
+//             continue;
+//         }
+//         if(cellA == cellB && cellB == cellC){
+//             roundWon = true;
+//             break;
+//         }
+//     }
+
+//     if(roundWon){
+//         statusText.textContent = `${currentPlayer} wins!`;
+//         running = false;
+//     }
+//     else if(!options.includes("")){
+//         statusText.textContent = `Draw!`;
+//         running = false;
+//     }
+//     else{
+//         changePlayer();
+//     }
+// }
+
 
