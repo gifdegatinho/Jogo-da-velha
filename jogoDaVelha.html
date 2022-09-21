@@ -1,59 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tic tac toe</title>
-
-
-    <style>
-        #jogo{
-    width:603px;
-    height:600px;
-    border:solid 3px
-}
- 
-.linha{
-    height:200px;
-    border-bottom:solid 1px;
-}
- 
-.casa{
-    width:200px;
-    height:100%;
-    border-right:solid 1px;
-    float:left;
-    font-size: 50px;
-}
-    </style>
+    <title>Jogo da Velha</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <div id="jogo"  onclick="mudarVezJogador()" >
-            <div class="linha">
-                <div  class="casa" id="0"  ></div>
-                <div class="casa" id="1"></div>
-                <div class="casa" id="2"></div>
-            </div>
-            <div class="linha">
-                <div class="casa" id="3"></div>
-                <div class="casa" id="4"></div>
-                <div class="casa" id="5"></div>
-            </div>
-            <div class="linha">
-                <div class="casa" id="6"></div>
-                <div class="casa" id="7"></div>
-                <div class="casa" id="8"></div>
-            </div>
-
-            <div>
-                <h2 id="textoStatus"></h2>
-            </div>
+    <div id="jogoContainer">
+        <h1>Jogo da velha</h1>
+        <div id="casaContainer">
+            <div class="casa" casaIndex="0"></div>
+            <div class="casa" casaIndex="1"></div>
+            <div class="casa" casaIndex="2"></div>
+            <div class="casa" casaIndex="3"></div>
+            <div class="casa" casaIndex="4"></div>
+            <div class="casa" casaIndex="5"></div>
+            <div class="casa" casaIndex="6"></div>
+            <div class="casa" casaIndex="7"></div>
+            <div class="casa" casaIndex="8"></div>
         </div>
-        <div id="resultado"></div>
+        <h2 id="textoStatus"></h2>
+        <button id="reiniciarBtn">Reiniciar</button>
     </div>
-
+    <div id="resultado"></div>
     <script src="jogoDaVelha.js"></script>
 </body>
+
 </html>
