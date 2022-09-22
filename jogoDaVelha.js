@@ -31,7 +31,7 @@ function casaClicada() {
         return;
     }
     marcaCasaClicada(this, numeroCasa);
-    mudarVezJogador();
+    // mudarVezJogador();
     informaResultado();
 
 }
